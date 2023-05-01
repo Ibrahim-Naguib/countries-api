@@ -1,0 +1,90 @@
+"use client";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import {
+  faSearch,
+  faAngleDown,
+  faAngleUp,
+} from "@fortawesome/free-solid-svg-icons";
+
+const SearchFilter = ({ setSearchValue }) => {
+  const regions = [
+    "All Countries",
+    "Africa",
+    "Americas",
+    "Asia",
+    "Europe",
+    "Oceania",
+  ];
+
+  const menuRef = useRef(null);
+
+  const [menu, setMenu] = useState(false);
+  const [regionFilter, setRegionFilter] = useState("Filter by Region");
+
+  useEffect(() => {
+    const clickHandler = (event) => {
+      if (menuRef.current && !menuRef.current.contains(event.target)) {
+        setMenu(false);
+      }
+    };
+    document.addEventListener("mousedown", clickHandler);
+    return () => {
+      document.removeEventListener("mousedown", clickHandler);
+    };
+  }, [menuRef]);
+
+  const handleSearch = (e) => {
+    setSearchValue(e.target.value);
+  };
+
+  return (
+    <div className="flex justify-between text-lightModeInput text-sm">
+      <div className="flex items-center gap-3 w-96 p-4 shadow-sm rounded-lg bg-white dark:bg-darkModeItem  ">
+        <FontAwesomeIcon icon={faSearch} />
+        <input
+          type="search"
+          placeholder="Search for a country"
+          className="outline-none bg-inherit w-full"
+          onChange={handleSearch}
+        />
+      </div>
+      <div>
+        <div
+          onClick={() => setMenu(!menu)}
+          ref={menuRef}
+          className="relative shadow-sm cursor-pointer flex justify-between items-center p-4 rounded-lg w-[200px] bg-white dark:bg-darkModeItem"
+        >
+          {regionFilter}
+          {menu ? (
+            <FontAwesomeIcon icon={faAngleUp} />
+          ) : (
+            <FontAwesomeIcon icon={faAngleDown} />
+          )}
+          <div
+            className={`w-[200px] transition-all duration-500 shadow-sm rounded-lg bg-white dark:bg-darkModeItem mt-3 absolute right-0 top-12  ${
+              menu
+                ? "translate-y-0"
+                : "translate-y-[-50px] opacity-0 pointer-events-none"
+            }`}
+          >
+            <ul className="">
+              {regions.map((region, index) => (
+                <li
+                  className="flex pl-5 py-3 rounded-lg transition-all duration-500 hover:bg-slate-100 dark:hover:bg-darkModeBg dark:hover:bg-opacity-50"
+                  key={index}
+                  onClick={(e) => {
+                    setRegionFilter(region);
+                  }}
+                >
+                  <button className="">{region}</button>
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default SearchFilter;
