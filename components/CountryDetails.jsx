@@ -20,13 +20,14 @@ const CountryDetails = ({ params }) => {
       const country = data.find((countr) => countr.name === decoded);
       setData(country);
       setLoading(false);
-
+      console.log(data);
       const borderCodes = country.borders;
       const borderNames = getCountryNamesByCodes(borderCodes, data);
       setBorder(borderNames);
     };
     fetchData();
   }, [params.countryname]);
+  console.log(data);
 
   function getCountryNamesByCodes(codes, data) {
     if (codes)

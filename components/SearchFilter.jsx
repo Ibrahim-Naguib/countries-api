@@ -5,8 +5,9 @@ import {
   faAngleDown,
   faAngleUp,
 } from "@fortawesome/free-solid-svg-icons";
+import { useRef, useState, useEffect } from "react";
 
-const SearchFilter = ({ setSearchValue }) => {
+const SearchFilter = ({ regionFilter, setRegionFilter, setSearch }) => {
   const regions = [
     "All Countries",
     "Africa",
@@ -19,7 +20,7 @@ const SearchFilter = ({ setSearchValue }) => {
   const menuRef = useRef(null);
 
   const [menu, setMenu] = useState(false);
-  const [regionFilter, setRegionFilter] = useState("Filter by Region");
+  // const [regionFilter, setRegionFilter] = useState("Filter by Region");
 
   useEffect(() => {
     const clickHandler = (event) => {
@@ -34,7 +35,7 @@ const SearchFilter = ({ setSearchValue }) => {
   }, [menuRef]);
 
   const handleSearch = (e) => {
-    setSearchValue(e.target.value);
+    setSearch(e.target.value);
   };
 
   return (

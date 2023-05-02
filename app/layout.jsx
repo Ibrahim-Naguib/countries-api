@@ -2,6 +2,9 @@ import Navbar from "@/components/Navbar";
 import "./globals.css";
 import { Providers } from "@/components/Providers";
 import { styles } from "@/styles";
+import { Suspense } from "react";
+import Loading from "./loading";
+// import Loading from "@/components/Loading";
 
 export const metadata = {
   title: "Create Next App",
@@ -10,12 +13,14 @@ export const metadata = {
 
 export default function RootLayout({ children }) {
   return (
-    <html lang="en" suppressHydrationWarning>
+    <html lang="en" suppressHydrationWarning={true}>
       <body className={`bg-lightModeBg dark:bg-darkModeBg ${styles.nunito}`}>
-        <Providers>
-          <Navbar />
-          {children}
-        </Providers>
+        <Suspense fallback={<Loading />}>
+          <Providers>
+            <Navbar />
+            {children}
+          </Providers>
+        </Suspense>
       </body>
     </html>
   );

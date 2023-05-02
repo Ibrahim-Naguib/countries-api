@@ -7,7 +7,7 @@ import { useTheme } from "next-themes";
 const Navbar = () => {
   const { theme, setTheme } = useTheme();
   return (
-    <header className="bg-white dark:bg-darkModeItem px-5 xs:px-8 lg:px-12">
+    <header className="bg-white dark:bg-darkModeItem px-5 xs:px-8 lg:px-12 shadow-lg">
       <nav className="flex justify-between items-center">
         <div className="text-sm xs:text-lg lg:text-2xl font-[800]">
           <h1 className="text-black dark:text-white">Where in the world?</h1>
@@ -22,7 +22,10 @@ const Navbar = () => {
             {theme === "light" ? (
               <FontAwesomeIcon icon={faMoon} />
             ) : (
-              <FontAwesomeIcon icon={faSun} />
+              <FontAwesomeIcon
+                icon={faSun}
+                className="text-[#FCE570] shadow-amber-300"
+              />
             )}
           </span>
           <span>{theme === "light" ? "Dark Mode" : "Light Mode"}</span>

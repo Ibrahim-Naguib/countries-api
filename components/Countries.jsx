@@ -1,9 +1,9 @@
 "use client";
 import SearchFilter from "./SearchFilter";
 import { getData } from "@/utils/getData";
-import Image from "next/image";
-import Link from "next/link";
 import { useState, useEffect } from "react";
+import Card from "./Card";
+import Loading from "./Loading";
 
 const Countries = () => {
   const [data, setData] = useState(null);
@@ -19,11 +19,11 @@ const Countries = () => {
     });
   }, []);
 
-  if (isLoading) return <p>Loading...</p>;
+  if (isLoading) return <Loading />;
   if (!data) return <p>No Country data</p>;
 
   return (
-    <main>
+    <>
       <SearchFilter
         setSearch={setSearch}
         regionFilter={regionFilter}
@@ -31,7 +31,8 @@ const Countries = () => {
       />
       <div className="mt-12 w-full shadow-lg ">
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 gap-8 justify-between">
-          {data
+          <Card data={data} search={search} regionFilter={regionFilter} />
+          {/* {data
             .filter(
               (item) =>
                 (search.toLowerCase() === "" ||
@@ -39,10 +40,6 @@ const Countries = () => {
                 (regionFilter === "Filter by Region" ||
                   regionFilter === "All Countries" ||
                   item.region === regionFilter)
-              // search.toLowerCase() === ""
-              //   ? item
-              //   : item.name.toLowerCase().includes(search) &&
-              //     item.region === regionFilter
             )
             .map((country, index) => (
               <Link
@@ -83,10 +80,10 @@ const Countries = () => {
                   </p>
                 </div>
               </Link>
-            ))}
+            ))} */}
         </div>
       </div>
-    </main>
+    </>
   );
 };
 

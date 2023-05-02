@@ -1,3 +1,9 @@
+import Countries from "@/components/Countries";
+
 export default function Home() {
-  return <main className="text-4xl">hello</main>;
+  return (
+    <main className="">
+      <Countries />
+    </main>
+  );
 }
