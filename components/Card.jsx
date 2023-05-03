@@ -1,10 +1,12 @@
+"use client";
+
 import Image from "next/image";
 import Link from "next/link";
 
-const Card = ({ data, search, regionFilter }) => {
+const Card = ({ countries, search, regionFilter }) => {
   return (
     <>
-      {data
+      {countries
         .filter(
           (item) =>
             (search.toLowerCase() === "" ||
@@ -17,7 +19,7 @@ const Card = ({ data, search, regionFilter }) => {
           <Link
             key={index}
             href={`/countries/${country.name}`}
-            className="bg-white mb-6 cursor-pointer dark:bg-darkModeItem rounded-md pb-4"
+            className="bg-white mb-6 shadow-lg cursor-pointer dark:bg-darkModeItem rounded-md pb-4 "
           >
             <div className="w-full h-44">
               <Image

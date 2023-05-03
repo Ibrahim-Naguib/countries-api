@@ -35,12 +35,12 @@ const SearchFilter = ({ regionFilter, setRegionFilter, setSearch }) => {
   }, [menuRef]);
 
   const handleSearch = (e) => {
-    setSearch(e.target.value);
+    setSearch(e.target.value.toLowerCase());
   };
 
   return (
-    <div className="flex justify-between text-lightModeInput text-sm">
-      <div className="flex items-center gap-3 w-96 p-4 shadow-sm rounded-lg bg-white dark:bg-darkModeItem  ">
+    <div className="flex flex-col xs:flex-row gap-3 justify-between text-lightModeInput text-sm">
+      <div className="flex items-center gap-3 w-auto xs:w-96 p-4 shadow-lg rounded-lg bg-white dark:bg-darkModeItem  ">
         <FontAwesomeIcon icon={faSearch} />
         <input
           type="search"
@@ -53,7 +53,7 @@ const SearchFilter = ({ regionFilter, setRegionFilter, setSearch }) => {
         <div
           onClick={() => setMenu(!menu)}
           ref={menuRef}
-          className="relative shadow-sm cursor-pointer flex justify-between items-center p-4 rounded-lg w-[200px] bg-white dark:bg-darkModeItem"
+          className="relative shadow-lg cursor-pointer flex justify-between items-center p-4 rounded-lg w-[200px] bg-white dark:bg-darkModeItem"
         >
           {regionFilter}
           {menu ? (
