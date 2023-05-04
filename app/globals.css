@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+.country-details p {
+  margin-bottom: 10px;
+  font-weight: 600;
+}
+.country-details p span {
+  font-weight: 300;
+}

@@ -33,18 +33,18 @@ const Card = ({ countries, search, regionFilter }) => {
             </div>
             <div className="p-6">
               <h2 className="text-lg font-bold mb-4">{country.name}</h2>
-              <p className="text-sm mb-2">
+              <p className="text-sm mb-2 font-[600]">
                 Population:{" "}
                 <span className="text-lightModeInput">
                   {" "}
                   {country.population}
                 </span>
               </p>
-              <p className="text-sm mb-2">
+              <p className="text-sm mb-2 font-[600]">
                 Region:{" "}
                 <span className="text-lightModeInput">{country.region} </span>
               </p>
-              <p className="text-sm mb-2">
+              <p className="text-sm mb-2 font-[600]">
                 Capital:{" "}
                 <span className="text-lightModeInput">{country.capital} </span>
               </p>
