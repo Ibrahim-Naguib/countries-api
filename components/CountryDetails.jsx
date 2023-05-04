@@ -1,53 +1,19 @@
 "use client";
-import Loading from "@/components/Loading";
-import { getData } from "@/utils/getData";
 import { faArrowLeft } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import Image from "next/image";
 import Link from "next/link";
-import { useState, useEffect } from "react";
 
-const CountryDetails = ({ params }) => {
-  const [data, setData] = useState(null);
-  const [isLoading, setLoading] = useState(false);
-  const [border, setBorder] = useState([]);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      setLoading(true);
-      const data = await getData();
-      const decoded = decodeURIComponent(params.countryname);
-      const country = data.find((countr) => countr.name === decoded);
-      setData(country);
-      setLoading(false);
-      console.log(data);
-      const borderCodes = country.borders;
-      const borderNames = getCountryNamesByCodes(borderCodes, data);
-      setBorder(borderNames);
-    };
-    fetchData();
-  }, [params.countryname]);
-  console.log(data);
-
-  function getCountryNamesByCodes(codes, data) {
-    if (codes)
-      return codes.map((code) => {
-        const country = data.find((c) => c.alpha3Code === code);
-        return country.name;
-      });
-  }
-  if (isLoading) return <Loading />;
-  if (!data) return <Loading />;
-
+const CountryDetails = ({ data, border }) => {
   return (
     <main className="px-24 py-14">
-      <div className="bg-white dark:bg-darkModeItem inline-block  rounded-md text-sm">
+      <div className="bg-white dark:bg-darkModeItem inline-block shadow-2xl rounded-md text-sm">
         <Link className="block px-8 py-2" href="/">
           <FontAwesomeIcon icon={faArrowLeft} />{" "}
           <span className="ml-2">Back</span>
         </Link>
       </div>
-      <div className="flex">
+      <div className="flex mt-5">
         <div className="flex-1">
           <Image
             src={data.flags.png}
@@ -83,18 +49,21 @@ const CountryDetails = ({ params }) => {
             </div>
           </div>
           <div>
-            <p>Border Countries:</p>
-            {border
-              ? border.map((bord, index) => (
-                  <Link
-                    href={`/countries/${encodeURIComponent(bord)}`}
-                    key={index}
-                  >
-                    {bord}
-                  </Link>
-                ))
-              : "No Border Countries"}
-            {}
+            <div>
+              Border Countries:{" "}
+              {border
+                ? border.map((bord, index) => (
+                    <div className="bg-white dark:bg-darkModeItem shadow-2xl py-2 px-6 rounded-lg mr-2 mb-2 inline-block">
+                      <Link
+                        href={`/countries/${encodeURIComponent(bord)}`}
+                        key={index}
+                      >
+                        {bord}
+                      </Link>
+                    </div>
+                  ))
+                : "No Border Countries"}
+            </div>
           </div>
         </div>
       </div>

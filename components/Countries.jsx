@@ -1,8 +1,8 @@
 "use client";
 import SearchFilter from "./SearchFilter";
-import { useState, useEffect, Suspense } from "react";
+import { useState, Suspense } from "react";
 import Card from "./Card";
-import Loading from "@/app/loading";
+import Loading from "@/components/Loading";
 
 const Countries = ({ countries }) => {
   const [search, setSearch] = useState("");

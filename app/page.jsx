@@ -1,9 +1,9 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Loading from "./loading";
 
 import Countries from "@/components/Countries";
+import Loading from "@/components/Loading";
 
 export default function Home() {
   const [countries, setCountries] = useState([]);
@@ -19,9 +19,9 @@ export default function Home() {
     fetchData();
   }, []);
 
-  // if (loading) {
-  //   return <Loading />;
-  // }
+  if (loading) {
+    return <Loading />;
+  }
 
   return (
     <main className="px-5 xs:px-8 lg:px-12 my-6">
