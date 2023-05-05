@@ -20,10 +20,11 @@ const Navbar = () => {
         >
           <span className="mr-2 xs-mr-3">
             {theme === "light" ? (
-              <FontAwesomeIcon icon={faMoon} />
+              <FontAwesomeIcon icon={faMoon} size="1x" />
             ) : (
               <FontAwesomeIcon
                 icon={faSun}
+                size="1x"
                 className="text-[#FCE570] shadow-amber-300"
               />
             )}

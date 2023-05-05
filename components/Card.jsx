@@ -50,7 +50,7 @@ const Card = ({ countries, search, regionFilter }) => {
         >
           <div className="w-full h-44">
             <Image
-              priority
+              loading="eager"
               src={country.flags.png}
               width={500}
               height={200}
