@@ -36,7 +36,6 @@ const page = ({ params: { countryname } }) => {
     return <Loading />;
   }
 
-  console.log(data);
   return (
     <main>
       <CountryDetails data={data} border={border} />

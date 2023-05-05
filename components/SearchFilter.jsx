@@ -20,7 +20,6 @@ const SearchFilter = ({ regionFilter, setRegionFilter, setSearch }) => {
   const menuRef = useRef(null);
 
   const [menu, setMenu] = useState(false);
-  // const [regionFilter, setRegionFilter] = useState("Filter by Region");
 
   useEffect(() => {
     const clickHandler = (event) => {
@@ -39,13 +38,13 @@ const SearchFilter = ({ regionFilter, setRegionFilter, setSearch }) => {
   };
 
   return (
-    <div className="flex flex-col xs:flex-row gap-3 justify-between text-lightModeInput text-sm">
+    <div className="flex flex-col xs:flex-row gap-3 justify-between text-lightModeText dark:text-lightModeInput text-sm">
       <div className="flex items-center gap-3 w-auto xs:w-96 p-4 shadow-lg rounded-lg bg-white dark:bg-darkModeItem  ">
         <FontAwesomeIcon icon={faSearch} />
         <input
           type="search"
           placeholder="Search for a country"
-          className="outline-none bg-inherit w-full"
+          className="outline-none bg-inherit w-full placeholder:text-lightModeText dark:placeholder:text-lightModeInput"
           onChange={handleSearch}
         />
       </div>
@@ -62,7 +61,7 @@ const SearchFilter = ({ regionFilter, setRegionFilter, setSearch }) => {
             <FontAwesomeIcon icon={faAngleDown} />
           )}
           <div
-            className={`w-[200px] transition-all duration-500 shadow-sm rounded-lg bg-white dark:bg-darkModeItem mt-3 absolute right-0 top-12  ${
+            className={`z-10 w-[200px] transition-all duration-500 shadow-sm rounded-lg bg-white dark:bg-darkModeItem mt-3 absolute right-0 top-12  ${
               menu
                 ? "translate-y-0"
                 : "translate-y-[-50px] opacity-0 pointer-events-none"

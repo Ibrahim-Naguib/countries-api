@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 
 import Countries from "@/components/Countries";
 import Loading from "@/components/Loading";
+import BackToTop from "@/components/BackToTop";
 
 export default function Home() {
   const [countries, setCountries] = useState([]);
@@ -26,6 +27,7 @@ export default function Home() {
   return (
     <main className="px-5 xs:px-8 lg:px-12 my-6">
       <Countries countries={countries} />
+      <BackToTop />
     </main>
   );
 }

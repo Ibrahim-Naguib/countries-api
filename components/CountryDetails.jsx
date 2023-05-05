@@ -16,13 +16,7 @@ const CountryDetails = ({ data, border }) => {
       </div>
       <div className="flex flex-col lg:flex-row mt-16 lg:mt-5 gap-20">
         <div className="flex-1 relative min-h-[300px] xs:max-h-[400px]">
-          <Image
-            src={data.flags.png}
-            alt={data.name}
-            // width={1000}
-            // height={1000}
-            fill
-          />
+          <Image src={data.flags.png} alt={data.name} fill priority />
         </div>
         <div className="flex-1 pt-6 lg:pt-10">
           <h2 className="font-[800] text-3xl">{data.name}</h2>
